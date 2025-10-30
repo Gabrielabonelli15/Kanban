@@ -19,7 +19,7 @@ if(isset($_POST['submit'])){
 
 <form method="POST">
     <input type="hidden" name="id" value="<?= $usuario['id_usuario'] ?>">
-    Nome: <input type="text" name="nome" value="<?= $usuario['nome'] ?>" required><br>
-    Email: <input type="email" name="email" value="<?= $usuario['email'] ?>" required><br>
+    Nome: <input type="text" name="nome" value="<?= $usuario['nome'] ?>" required> <br>
+    Email: <input type="email" name="email" value="<?= $usuario['email'] ?>" required> <br>
     <button type="submit" name="submit">Atualizar Usuário</button>
 </form>
