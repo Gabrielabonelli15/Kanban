@@ -8,16 +8,15 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
 
     try {
-        $sql = "INSERT INTO usuario (nome, email) VALUES (?, ?)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $nome, $email);
-        $stmt->execute();
+        $sql = "INSERT INTO usuario (nome, email) VALUES (:nome, :email)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['nome' => $nome, 'email' => $email]);
         $mensagem = "Usuário cadastrado com sucesso!";
-    } catch (Exception $e) {
-        if ($conn->errno == 1062) {
+    } catch (PDOException $e) {
+        if ($e->getCode() == 23000) {
             $mensagem = "Ops! Este e-mail já está sendo usado. Tente outro.";
         } else {
-            $mensagem = "Erro ao cadastrar: " . $conn->error;
+            $mensagem = "Erro ao cadastrar: " . $e->getMessage();
         }
     }
 }

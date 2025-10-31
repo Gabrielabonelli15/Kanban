@@ -1,20 +1,25 @@
 <?php
-include '../db.php'; 
+include 'db.php'; 
 
 $usuarios = []; 
 
 try {
-
-    $stmt = $pdo->query("SELECT * FROM usuarios ORDER BY nome");
+    $stmt = $pdo->query("SELECT * FROM usuario ORDER BY nome");
     $usuarios = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 } catch (PDOException $e) {
     die("Erro ao buscar usuários: " . $e->getMessage());
 }
 ?>
 
+<html>
+<head>
+    <title>Lista de Usuários</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
 <h2>Lista de Usuários</h2>
-<table border="1">
+<table>
     <thead>
         <tr>
             <th>ID</th>
@@ -26,31 +31,22 @@ try {
     <tbody>
         <?php foreach($usuarios as $u): ?>
         <tr>
-            <td><?= $u['id_usuario'] ?></td>
-            
+            <td><?= $u['id'] ?></td>
             <td><?= htmlspecialchars($u['nome']) ?></td>
             <td><?= htmlspecialchars($u['email']) ?></td>
-            
             <td>
-                <a href="../Update/usuario.php?id=<?= $u['id_usuario'] ?>">Editar</a> |
-
-                <form method="POST" action="../Delete/usuario.php" style="display:inline;">
-                    <input type="hidden" name="id_usuario" value="<?= $u['id_usuario'] ?>">
-                    
-                    <button type="submit" 
-                            onclick="return confirm('Tem certeza que deseja apagar?')"
-                            style="background:none; border:none; color:blue; cursor:pointer; text-decoration:underline; padding:0;">
-                        Deletar
-                    </button>
-                </form>
+                <a href="update.php?id=<?= $u['id'] ?>">Editar</a> |
+                <a href="delete.php?id=<?= $u['id'] ?>" onclick="return confirm('Tem certeza que deseja apagar?')">Deletar</a>
             </td>
         </tr>
         <?php endforeach; ?>
-
         <?php if (count($usuarios) === 0): ?>
-            <tr>
-                <td colspan="4">Nenhum usuário cadastrado.</td>
-            </tr>
+        <tr>
+            <td colspan="4">Nenhum usuário cadastrado.</td>
+        </tr>
         <?php endif; ?>
     </tbody>
 </table>
+</div>
+</body>
+</html>
