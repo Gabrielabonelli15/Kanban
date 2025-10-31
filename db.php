@@ -1,13 +1,10 @@
 <?php
-$host = "localhost";
-$db = "tarefas_app";
-$user = "root";
-$pass = "";
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch(PDOException $e) {
-    die("Erro de conexão: " . $e->getMessage());
-}
-?>
+    $host = 'localhost';
+    $user = 'root';
+    $pass = 'root'; 
+    $db = 'kanban_app';
+    $conn = new mysqli($host, $user, $pass, $db);
+    if ($conn->connect_error) {
+        die('Erro de conexão: ' . $conn->connect_error);
+    }
+?>  
