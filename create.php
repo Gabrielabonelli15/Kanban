@@ -8,11 +8,11 @@ if(isset($_POST['submit'])){
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
         $error = 'Email inválido.';
     } else {
-        $senha = password_hash($_POST['senha'], PASSWORD_DEFAULT);
         try {
-            $sql = "INSERT INTO usuarios (nome, email, senha) VALUES (:nome, :email, :senha)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(['nome'=>$nome, 'email'=>$email, 'senha'=>$senha]);
+            $sql = "INSERT INTO usuario (nome, email) VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ss", $nome, $email);
+            $stmt->execute();
             $success = 'Usuário cadastrado!';
             $nome = '';
             $email = '';
