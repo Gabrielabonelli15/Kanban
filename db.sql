@@ -2,7 +2,7 @@ CREATE DATABASE industria_alimenticia;
 USE industria_alimenticia;
 
 CREATE TABLE usuario(
-    id INT PRIMARY KEY NOT NULL,
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL

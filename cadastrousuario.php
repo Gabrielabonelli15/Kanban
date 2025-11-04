@@ -1,19 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro de Usuários</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-
-<body>
-    <div class="container">
-    <h2>Cadastro de Usuário</h2>
-    <div class="menu">
-        <a href="login.php">Login</a>
-    </div>
-
-    <?php
+ <?php
     include 'db.php';
 
         $msg = '';
@@ -37,6 +22,23 @@
         }
         echo $msg;
         ?>
+        <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Usuários</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div class="container">
+    <h2>Cadastro de Usuário</h2>
+    <div class="menu">
+        <a href="login.php">Login</a>
+        <a href="kanban.php">Kanban</a>
+    </div>
+
+   
 
     <form method="post">
         <label>Nome:</label>
