@@ -4,21 +4,25 @@ if (!isset($_SESSION['usuario_id'])) {
     header('Location: login.php');
     exit;
 }
-include 'db.php'; include 'usuario_listar.php'; ?>
+include 'db.php'; 
+include 'listausuarios.php'; 
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Editar Tarefa</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title></title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-<div class="container">
-    <h2>Editar Tarefa</h2>
-    <div class="menu">
-        <a href="index.php">Menu Principal</a>
-        <a href="kanban.php">Voltar ao Kanban</a>
-    </div>
+    <div class="container">
+        <h2>Editar Tarefa</h2>
+        <div class="menu">
+            <a href="index.php">Menu Principal</a>
+            <a href="kanban.php">Voltar ao Kanban</a>
+        </div>
+
     <?php
     $msg = '';
     $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
@@ -53,6 +57,7 @@ include 'db.php'; include 'usuario_listar.php'; ?>
     }
     echo $msg;
     ?>
+
     <form method="post">
         <label>Usuário:</label>
         <select name="id_usuario" required>
@@ -68,14 +73,17 @@ include 'db.php'; include 'usuario_listar.php'; ?>
             <option value="media" <?= $tarefa['prioridade']=='media'?'selected':'' ?>>Média</option>
             <option value="alta" <?= $tarefa['prioridade']=='alta'?'selected':'' ?>>Alta</option>
         </select>
+
         <label>Status:</label>
         <select name="status" required>
             <option value="a_fazer" <?= $tarefa['status']=='a_fazer'?'selected':'' ?>>A Fazer</option>
             <option value="fazendo" <?= $tarefa['status']=='fazendo'?'selected':'' ?>>Fazendo</option>
             <option value="pronto" <?= $tarefa['status']=='pronto'?'selected':'' ?>>Pronto</option>
         </select>
+        
         <button type="submit">Salvar Alterações</button>
     </form>
+
 </div>
 </body>
 </html>

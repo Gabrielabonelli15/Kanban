@@ -1,5 +1,4 @@
 <?php
-session_start();
 include 'db.php';
 $msg = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

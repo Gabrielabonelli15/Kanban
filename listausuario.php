@@ -1,5 +1,5 @@
-<?php include 'db.php'; ?>
 <?php
+include 'db.php';
 $result = $conn->query("SELECT id, nome FROM usuario ORDER BY nome");
 $usuarios = [];
 while ($row = $result->fetch_assoc()) {

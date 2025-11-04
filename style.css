@@ -142,3 +142,10 @@ button:hover {
     margin-bottom:18px; 
     text-align:center; 
 }
+
+h2{
+    color:#009688; 
+    text-decoration:none;
+    text-align:center; 
+    margin-bottom:24px;
+}
