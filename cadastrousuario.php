@@ -1,4 +1,5 @@
 <?php include 'db.php'; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,6 +13,7 @@
     <div class="menu">
         <a href="login.php">Login</a>
     </div>
+
     <?php
     $msg = '';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -34,6 +36,7 @@
     }
     echo $msg;
     ?>
+
     <form method="post">
         <label>Nome:</label>
         <input type="text" name="nome" required>
@@ -44,5 +47,6 @@
         <button type="submit">Cadastrar</button>
     </form>
 </div>
+
 </body>
 </html>

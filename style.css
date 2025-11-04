@@ -14,7 +14,7 @@ body {
 }
 
 h1, h2 {
-    color: #2c3e50;
+    color: #1a2e42;
 }
 
 .menu {
@@ -23,7 +23,7 @@ h1, h2 {
 .menu a {
     margin-right: 15px;
     text-decoration: none;
-    color: #2980b9;
+    color: #0072be;
     font-weight: bold;
 }
 .menu a:hover {
@@ -39,7 +39,7 @@ input, select, textarea {
 }
 
 button {
-    background: #2980b9;
+    background: #48acee;
     color: #fff;
     border: none;
     padding: 8px 16px;
@@ -47,7 +47,7 @@ button {
     cursor: pointer;
 }
 button:hover {
-    background: #1c5980;
+    background: #72a0bd;
 }
 
 .kanban {
@@ -71,10 +71,10 @@ button:hover {
     margin-top: 8px;
 }
 .success {
-    color: green;
+    color: rgb(62, 164, 196);
     font-weight: bold;
 }
 .error {
-    color: red;
+    color: rgb(0, 26, 255);
     font-weight: bold;
 }
