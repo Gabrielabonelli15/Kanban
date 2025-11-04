@@ -1,5 +1,3 @@
-<?php include 'db.php'; ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -7,35 +5,38 @@
     <title>Cadastro de Usuários</title>
     <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body>
-<div class="container">
-    <h2>Cadastro de Usuários</h2>
+    <div class="container">
+    <h2>Cadastro de Usuário</h2>
     <div class="menu">
         <a href="login.php">Login</a>
     </div>
 
     <?php
-    $msg = '';
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $nome = trim($_POST['nome']);
-        $email = trim($_POST['email']);
-        $senha = $_POST['senha'];
-        if ($nome && filter_var($email, FILTER_VALIDATE_EMAIL) && $senha) {
-            $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)");
-            $stmt->bind_param('sss', $nome, $email, $senha_hash);
-            if ($stmt->execute()) {
-                $msg = '<p class="success">Cadastro concluído com sucesso</p>';
+    include 'db.php';
+
+        $msg = '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $nome = trim($_POST['nome']);
+            $email = trim($_POST['email']);
+            $senha = $_POST['senha'];
+            if ($nome && filter_var($email, FILTER_VALIDATE_EMAIL) && $senha) {
+                $senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+                $stmt = $conn->prepare("INSERT INTO usuario (nome, email, senha) VALUES (?, ?, ?)");
+                $stmt->bind_param('sss', $nome, $email, $senha_hash);
+                if ($stmt->execute()) {
+                    $msg = '<p class="success">Cadastro concluído com sucesso</p>';
+                } else {
+                    $msg = '<p class="error">Erro ao cadastrar: ' . $conn->error . '</p>';
+                }
+                $stmt->close();
             } else {
-                $msg = '<p class="error">Erro ao cadastrar: ' . $conn->error . '</p>';
+                $msg = '<p class="error">Preencha todos os campos corretamente.</p>';
             }
-            $stmt->close();
-        } else {
-            $msg = '<p class="error">Preencha todos os campos corretamente.</p>';
         }
-    }
-    echo $msg;
-    ?>
+        echo $msg;
+        ?>
 
     <form method="post">
         <label>Nome:</label>

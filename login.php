@@ -30,18 +30,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title></title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
 <div class="container">
     <h2>Login</h2>
     <div class="menu">
-        <a href="usuario_cadastro.php">Cadastrar Usuário</a>
+        <a href="cadastrousuario.php">Cadastrar Usuário</a>
     </div>
     <?= $msg ?>
     <form method="post">
